@@ -5,6 +5,7 @@ import SubscribeSection from './SubscribeSection';
 import EventImg1 from './photos/img4.jpg';
 import EventImg2 from './photos/img5.jpg';
 import EventImg3 from './photos/img6.jpg';
+import { Helmet } from 'react-helmet'; // for the web browser tab to update
 
 function Events() {
   const [events] = useState([
@@ -50,6 +51,9 @@ function Events() {
 
   return (
     <div>
+      <Helmet> 
+        <title>Project Breakpoint - Events</title>
+      </Helmet>
       <Navbar />
       <main>
         <section className="welcome-section">
