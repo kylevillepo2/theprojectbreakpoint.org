@@ -1,6 +1,11 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import KevinWangImg from './photos/KevinWang.jpg';
+import KyleImg from './photos/KylePhoto.PNG';
+import ian from './photos/ian.jpg';
+import QuyenImg from './photos/QuyenImg.jpg';
+import ChrisImg from './photos/chrisimg.jpg';
 import SubscribeSection from './SubscribeSection';
 
 function Home() {
@@ -35,7 +40,7 @@ function Home() {
       <div class="founders-container">
         {/*} Founder 1 */}
         <div class="founder-card">
-          <img src="photos/KevinWang.jpg" alt="Photo of Kevin Wang" />
+          <img src={KevinWangImg} alt="Photo of Kevin Wang" />
           <div class="founder-name">Kevin Wang</div>
           <div class="founder-role">President, Director of Business Development, Coach</div>
           <div class="founder-description">
@@ -50,7 +55,7 @@ function Home() {
 
         {/*} Founder 2 */}
         <div class="founder-card">
-          <img src="photos/KylePhoto.PNG" alt="Photo of Kyle Villeponteau" />
+          <img src={KyleImg} alt="Photo of Kyle Villeponteau" />
           <div class="founder-name">Kyle Villeponteau</div>
           <div class="founder-role">Vice-President, CTO</div>
           <div class="founder-description">
@@ -65,7 +70,7 @@ function Home() {
 
         {/*} Founder 3 */}
         <div class="founder-card">
-          <img src="photos/ian.jpg" alt="Photo of Ian Lucchesi" />
+          <img src={ian} alt="Photo of Ian Lucchesi" />
           <div class="founder-name">Ian Lucchesi</div>
           <div class="founder-role">Secretary</div>
           <div class="founder-description">
@@ -82,14 +87,16 @@ function Home() {
       <div class="founders-container">
         {/*} Founder 4 */}
         <div class="founder-card">
-          <img src="photos/founder4.jpg" alt="Photo of Quyen Ho" />
+          <img src={QuyenImg} alt="Photo of Quyen Ho" />
           <div class="founder-name">Quyen Ho</div>
           <div class="founder-role">Director of Outreach</div>
           <div class="founder-description">
-            Quyen Ho is a junior at UCLA studying Communications. She has a deep passion for
-            volunteer work and community building, which she brings to Project Breakpoint as
-            the Director of Outreach. Quyen hopes to expand the program and connect with community
-            partners to bring tennis to everyone.
+          Quyen Ho is a second year at UCI majoring in Biological Sciences. Her passion for youth mentorship began
+           in high school when she tutored students to help them develop their writing skills. Being part of the 
+           tennis team in high school provided her with a community she hopes other students can experience as well, 
+           which is why she is excited to join Project Breakpoint. She hopes to give youth in her community an opportunity
+            to be physically active in a way that’s fun and engaging. 
+
           </div>
         </div>
 
@@ -107,13 +114,15 @@ function Home() {
 
         {/*} Founder 6 */}
         <div class="founder-card">
-          <img src="photos/founder6.jpg" alt="Photo of Sara Lopez" />
+          <img src={ChrisImg} alt="Photo of Sara Lopez" />
           <div class="founder-name">Chris Li</div>
           <div class="founder-role">Director of Fundraising and Development</div>
           <div class="founder-description">
-            Sara Lopez is a senior at Stanford University pursuing a degree in Psychology.
-            With a background in sports psychology and mentoring youth athletes, Sara brings
-            valuable insights on team dynamics and personal development to Project Breakpoint.
+          Christopher Li is a sophomore at UC Irvine majoring in Informatics with a specialization 
+          in Human-Computer Interaction. His passion for leadership and youth mentorship stemmed from 
+          his past coaching experience at numerous summer camps with the City of Irvine and volunteering
+           with organizations such as ACEing Autism. With a love for the sport and watching bonds form 
+           within the youth he taught, he felt inspired to join Project Breakpoint, where he hopes he can continue giving back to the community.
           </div>
         </div>
       </div>
