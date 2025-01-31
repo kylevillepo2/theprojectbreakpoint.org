@@ -2,10 +2,15 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import SubscribeSection from './SubscribeSection';
+import { Helmet } from 'react-helmet'; // for the web browser tab to update
 
 const Contact = () => {
   return (
     <div className="contact-page">
+      <Helmet> 
+        <title>Project Breakpoint - Contact</title>
+      </Helmet>
+
       <Navbar />
       
       <main>

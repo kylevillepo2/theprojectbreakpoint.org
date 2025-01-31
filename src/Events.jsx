@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
+import React, { useState, useEffect } from 'react';
+import Navbar from './Navbar';
 import Footer from "./Footer";
 import SubscribeSection from "./SubscribeSection";
 
@@ -49,6 +49,9 @@ function Events() {
 
   return (
     <div>
+      <Helmet> 
+        <title>Project Breakpoint - Events</title>
+      </Helmet>
       <Navbar />
       <main>
         <section className="welcome-section">
