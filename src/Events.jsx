@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubscribeSection from "./SubscribeSection";
-import EventImg1 from "./photos/img4.jpg";
-import EventImg2 from "./photos/img5.jpg";
-import EventImg3 from "./photos/img6.jpg";
 
 function Events() {
   const [events] = useState([
@@ -67,7 +64,7 @@ function Events() {
           <div className="events-container">
             {/* Event 1 */}
             <div className="event-card">
-              <img src={EventImg1} alt="Spring Tennis Clinic" />
+              <img src={"./photos/img4.jpg"} alt="Spring Tennis Clinic" />
               <div className="event-info">
                 <h3 className="event-title">Spring Tennis Clinic</h3>
                 <p className="event-date">Date: March 15, 2024</p>
@@ -99,7 +96,10 @@ function Events() {
 
             {/* Event 2 */}
             <div className="event-card">
-              <img src={EventImg2} alt="Community Doubles Tournament" />
+              <img
+                src={"./photos/img5.jpg"}
+                alt="Community Doubles Tournament"
+              />
               <div className="event-info">
                 <h3 className="event-title">Community Doubles Tournament</h3>
                 <p className="event-date">Date: April 10, 2024</p>
@@ -127,7 +127,7 @@ function Events() {
 
             {/* Event 3 */}
             <div className="event-card">
-              <img src={EventImg3} alt="Youth Outreach Day" />
+              <img src={"./photos/img6.jpg"} alt="Youth Outreach Day" />
               <div className="event-info">
                 <h3 className="event-title">Youth Outreach Day</h3>
                 <p className="event-date">Date: May 5, 2024</p>

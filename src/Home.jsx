@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import FounderCard from "./components/FounderCard";
 import { founders } from "./data/founders";
-import SubscribeSection from "./SubscribeSection";
 
 function Home() {
   return (
@@ -22,7 +21,12 @@ function Home() {
         </section>
 
         {/*} Mission Section */}
-        <section class="mission-section">
+        <section
+          class="mission-section"
+          style={{
+            background: `url(${"/photos/img1.jpg"}) center/cover no-repeat`,
+          }}
+        >
           <div class="mission-content">
             <h2>Our Mission</h2>
             <p>
