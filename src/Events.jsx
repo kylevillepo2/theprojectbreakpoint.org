@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar';
+import React, { useState, useEffect } from "react";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubscribeSection from "./SubscribeSection";
+import { Helmet } from "react-helmet";
 
 function Events() {
   const [events] = useState([
@@ -49,7 +50,7 @@ function Events() {
 
   return (
     <div>
-      <Helmet> 
+      <Helmet>
         <title>Project Breakpoint - Events</title>
       </Helmet>
       <Navbar />
