@@ -346,3 +346,19 @@ footer p {
   font-size: 0.9rem;
   color: #7f8c8d;
 }
+
+/* about section */
+
+.about-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.about-section li {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+}
+
