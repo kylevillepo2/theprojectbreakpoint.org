@@ -34,11 +34,4 @@ export const founders = [
     description:
       "Arjun is a sophomore at UC Irvine majoring in Applied Mathematics. His passion for leadership stems from his experience as president of his middle and high school student government. With over 10 years of competitive tennis experience, four years of assistant coaching at the City of Irvine during the summers, and service as varsity tennis captain in high school, Arjun is excited to share his love for the sport and help others find joy in the game.",
   },
-  {
-    image: "./photos/chrisimg.jpg",
-    name: "Chris Li",
-    role: "Director of Fundraising and Development",
-    description:
-      "Christopher Li is a sophomore at UC Irvine majoring in Informatics with a specialization in Human-Computer Interaction. His passion for leadership and youth mentorship stemmed from his past coaching experience at numerous summer camps with the City of Irvine and volunteering with organizations such as ACEing Autism. With a love for the sport and watching bonds form within the youth he taught, he felt inspired to join Project Breakpoint, where he hopes he can continue giving back to the community.",
-  },
 ];
