@@ -11,7 +11,7 @@ export const founders = [
     name: "Kyle Villeponteau",
     role: "Vice-President, CTO",
     description:
-      "Kyle Villeponteau is a sophomore at UC Santa Barbara studying Computer Science. His passion for tennis started as a little kid and continued throughout high school as he managed to rank top 250 in his class of graduates. Beyond competition, Kyle's love for the sport deepened when he took on the role of a tennis instructor at Bay Club summer camp. Through Project Breakpoint, he aims to share his enthusiasm for tennis and mentorship, inspiring and empowering young children to discover the joy of the game.",
+      "Kyle Villeponteau is a Sophomore at UC Santa Barbara studying Computer Science. His passion for tennis started as a little kid and continued throughout high school as he managed to rank top 250 in his class of graduates. Beyond competition, Kyle's love for the sport deepened when he took on the role of a tennis instructor at Bay Club summer camp. Through Project Breakpoint, he aims to share his enthusiasm for tennis and mentorship, inspiring and empowering young children to discover the joy of the game.",
   },
   {
     image: "./photos/ian.jpg",
