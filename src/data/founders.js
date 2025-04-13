@@ -21,7 +21,7 @@ export const founders = [
       "Ian Lucchesi is a sophomore at UC Irvine, majoring in Neurobiology. His desire for leadership and the opportunity to teach stems from his time in high school with the Big Brother Program, teaching incoming freshmen the ropes and contributing to their transition. Coming from a background of coaching kids in gymnastics, Ian is excited to make meaningful differences and spread joy through sports and fitness with Project Breakpoint.",
   },
   {
-    image: "./photos/QuyenImg.jpg",
+    image: "./photos/QuyenImg2.jpg",
     name: "Quyen Ho",
     role: "Director of Outreach",
     description:
