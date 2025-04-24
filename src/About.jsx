@@ -12,12 +12,35 @@ function About() {
       </Helmet>
       <Navbar />
       <main>
-        {/* Our Story Section */}
-        <section className="about-section">
-          <h2>Our Story</h2>
-          <p>
-            Project Breakpoint was founded by a group of college students passionate about making tennis accessible to all.
-          </p>
+        {/* Hero Image Section */}
+        <section
+          style={{
+            backgroundImage: `url(${"/photos/ourstory.jpg"})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            minHeight: "600px",
+            position: "relative",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#fff",
+            textAlign: "center",
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "rgba(0, 0, 0, 0.4)",
+              padding: "30px",
+              borderRadius: "10px",
+              maxWidth: "700px",
+            }}
+          >
+            <h1 style={{ fontSize: "2.5rem", marginBottom: "10px" }}>Our Story</h1>
+            <p style={{ fontSize: "1.2rem", lineHeight: "1.6" }}>
+              Project Breakpoint was founded by a group of college students passionate about making tennis accessible to all.
+            </p>
+          </div>
         </section>
 
         {/* Our Mission & Vision Section */}
