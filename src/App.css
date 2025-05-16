@@ -450,3 +450,89 @@ footer p {
   letter-spacing: 1px;
 }
 
+/* Event Card Styles */
+.event-card.featured-event {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #22343a;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.events-container {
+  text-align: center;
+  padding: 60px 0;
+  position: relative;
+}
+.event-card-title {
+  font-size: 2em;
+  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.event-card-subtitle {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.event-card-address {
+  margin-bottom: 24px;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+.event-card-map {
+  margin: 32px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.event-card-map iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+.event-highlights-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.event-highlight-badge {
+  background: #d6f36b;
+  color: #22343a;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 1em;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 6px;
+}
+.event-card-rsvp-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.event-card-rsvp-btn {
+  display: inline-block;
+  background: #d6f36b;
+  color: #22343a;
+  font-weight: 700;
+  font-size: 1.3em;
+  border-radius: 10px;
+  padding: 18px 40px;
+  margin: 24px 0 0 0;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+.event-card-rsvp-btn:hover {
+  background: #cbe53a;
+  color: #1a2a2a;
+}
+

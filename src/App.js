@@ -4,11 +4,13 @@ import Home from "./Home"; // Rename your original App component to Home.js
 import About from "./About";
 import Contact from "./Contact";
 import Events from "./Events";
+import EventPopup from "./components/EventPopup";
 import "./App.css";
 
 function App() {
   return (
     <Router>
+      <EventPopup />
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
