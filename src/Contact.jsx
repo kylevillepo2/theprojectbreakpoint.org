@@ -23,6 +23,10 @@ const Contact = () => {
             <a className="email-link" href="mailto:proj.breakpoint@gmail.com">
               proj.breakpoint@gmail.com
             </a>
+            <br />
+            or call us at:
+            <br />
+            <a className="email-link" href="tel:8583222983">(858)-322-2983</a>
           </div>
         </section>
 

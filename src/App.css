@@ -362,3 +362,91 @@ footer p {
   align-items: center;
 }
 
+/* Tennis Balls Animation */
+.tennis-balls-animation {
+  position: absolute;
+  left: 0;
+  top: -40px;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+  z-index: 2;
+}
+.tennis-ball {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 30% 30%, #f6ff00 80%, #e0e000 100%);
+  border-radius: 50%;
+  border: 3px solid #fff;
+  position: absolute;
+  top: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  animation-timing-function: linear;
+}
+.tennis-ball.ball1 {
+  left: -50px;
+  animation: roll-ball1 4s linear infinite;
+}
+.tennis-ball.ball2 {
+  left: -120px;
+  animation: roll-ball2 5s linear infinite 1s;
+}
+.tennis-ball.ball3 {
+  left: -200px;
+  animation: roll-ball3 6s linear infinite 2s;
+}
+@keyframes roll-ball1 {
+  0% { left: -50px; transform: rotate(0deg); }
+  100% { left: 100%; transform: rotate(360deg); }
+}
+@keyframes roll-ball2 {
+  0% { left: -120px; transform: rotate(0deg); }
+  100% { left: 100%; transform: rotate(360deg); }
+}
+@keyframes roll-ball3 {
+  0% { left: -200px; transform: rotate(0deg); }
+  100% { left: 100%; transform: rotate(360deg); }
+}
+
+/* Event Highlights */
+.event-highlights-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.event-highlight {
+  background: #d6f36b;
+  color: #22343a;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 1em;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 6px;
+}
+
+/* Countdown Timer */
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #d6f36b;
+}
+.countdown-label {
+  margin-right: 8px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 400;
+}
+.countdown-value {
+  font-size: 1.2em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+

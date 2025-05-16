@@ -8,8 +8,8 @@ function Home() {
   return (
     <div>
       <Navbar />
-      {/*} Main Content */}
       <main>
+        
         {/*} Welcome Section */}
         <section class="welcome-section">
           <h2>Welcome to Project Breakpoint</h2>
@@ -19,6 +19,7 @@ function Home() {
             involved in our community programs.
           </p>
         </section>
+
 
         {/*} Mission Section */}
         <section
@@ -36,6 +37,7 @@ function Home() {
             </p>
           </div>
         </section>
+
 
         {/*} Founders Section */}
         <div class="founders-section">
