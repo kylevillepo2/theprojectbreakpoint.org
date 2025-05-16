@@ -24,9 +24,13 @@ const Contact = () => {
               proj.breakpoint@gmail.com
             </a>
             <br />
-            or call us at:
+            or message us at:
             <br />
-            <a className="email-link" href="tel:8583222983">(858)-322-2983</a>
+            <span className="contact-phone">(858)-295-5270</span>
+            <br />
+            <span style={{ fontSize: '0.98em', color: '#666', display: 'block', marginTop: '8px' }}>
+              <em>Please specify you are texting about Project Breakpoint in your message!</em>
+            </span>
           </div>
         </section>
 
