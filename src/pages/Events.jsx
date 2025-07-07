@@ -8,25 +8,24 @@ function Events() {
   const [timeLeft, setTimeLeft] = useState({days: 0, hours: 0, minutes: 0});
 
   useEffect(() => {
-    const eventTime = new Date(2025, 4, 24, 12, 0); // May 24, 2025, 12:00 PM
+    const eventTime = new Date(2025, 6, 11, 16, 30); // July 11, 2025, 4:30 PM
     const updateTimer = () => {
       const now = new Date();
       const diff = eventTime - now;
       if (diff <= 0) {
-        setTimeLeft({days: 0, hours: 0, minutes: 0});
+        setTimeLeft({days: 0, hours: 0});
         return;
       }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      setTimeLeft({days, hours, minutes});
+      setTimeLeft({days, hours});
     };
     updateTimer();
     const interval = setInterval(updateTimer, 1000 * 30);
     return () => clearInterval(interval);
   }, []);
 
-  const {days, hours, minutes} = timeLeft;
+  const {days, hours} = timeLeft;
 
   return (
     <div>
@@ -40,20 +39,23 @@ function Events() {
             <div className="event-card featured-event">
               {/* Countdown Timer */}
               <div className="countdown-timer" style={{marginBottom: 24}}>
-                <span className="countdown-label">Event Starts In:</span>
-                <span className="countdown-value">{days}d {hours}h {minutes}m</span>
+                <span className="countdown-label">First Summer Clinic Starts In:</span>
+                <span className="countdown-value">{days}d {hours}h</span>
               </div>
-              <h2 className="event-card-title">SATURDAY MAY 24TH, 12:00 - 1:00 PM</h2>
-              <h3 className="event-card-subtitle">at Fullerton Tennis Center</h3>
+              <h2 className="event-card-title">SUMMER TENNIS CLINICS</h2>
+              <h3 className="event-card-subtitle">Every Friday • 4:30 PM - 5:30 PM</h3>
+              <div className="event-card-dates">
+                July 11th - August 16th, 2025
+              </div>
               <div className="event-card-address">
-                110 E Valencia Mesa Dr,<br />
-                Fullerton, CA 92835
+                Canyon Crest Academy Tennis Courts<br />
+                San Diego, CA
               </div>
               {/* Google Maps Embed */}
               <div className="event-card-map">
                 <iframe
-                  title="Fullerton Tennis Center Map"
-                  src="https://www.google.com/maps?q=Fullerton+Tennis+Center,110+E+Valencia+Mesa+Dr,+Fullerton,+CA+92835&output=embed"
+                  title="Canyon Crest Academy Athletic Field Map"
+                  src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&center=32.9579101,-117.1886939&zoom=16&maptype=satellite"
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -63,6 +65,7 @@ function Events() {
               <div className="event-highlights-row">
                 <span className="event-highlight-badge">NO EXPERIENCE NEEDED</span>
                 <span className="event-highlight-badge">RACKETS & BALLS PROVIDED</span>
+                <span className="event-highlight-badge">WEEKLY SESSIONS</span>
               </div>
               <div className="event-card-rsvp-row">
                 <a
