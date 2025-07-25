@@ -31,6 +31,8 @@ function Events() {
     <div>
       <Helmet>
         <title>Project Breakpoint - Events</title>
+        <meta name="description" content="See upcoming free tennis clinics and events for low-income youth in the Fullerton area. Project Breakpoint offers free tennis coaching, equipment, and a welcoming environment for kids and families." />
+        <meta name="keywords" content="free tennis for kids, Fullerton youth tennis, tennis non-profit, low-income sports, tennis clinics Fullerton, Project Breakpoint events" />
       </Helmet>
       <Navbar />
       <main>

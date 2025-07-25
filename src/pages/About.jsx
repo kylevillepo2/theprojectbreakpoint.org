@@ -9,14 +9,30 @@ function About() {
     <div>
       <Helmet>
         <title>Project Breakpoint - About</title>
+        <meta name="description" content="Learn about Project Breakpoint, a tennis non-profit providing free tennis coaching, equipment, and a welcoming environment for low-income youth in the Fullerton area. Discover our story, mission, and vision." />
       </Helmet>
       <Navbar />
       <main>
         {/* Welcome Section (matching Home) */}
-        <section className="welcome-section">
-          <h2>About Project Breakpoint</h2>
-          <p>
-            Empowering youth through tennis, one serve at a time. Learn about our story, mission, and vision, and discover how we’re making tennis accessible for all.
+        <section className="welcome-section" style={{ textAlign: 'center', padding: '60px 0' }}>
+          <h1 style={{
+            color: '#2e7d32',
+            fontWeight: 'bold',
+            fontSize: '2.5rem',
+            marginBottom: '32px',
+            letterSpacing: 1
+          }}>
+            About Project Breakpoint
+          </h1>
+          <p style={{
+            fontSize: '1.25rem',
+            color: '#333',
+            maxWidth: 900,
+            margin: '0 auto',
+            lineHeight: 1.3
+          }}>
+            Empowering youth through tennis, one serve at a time. Learn about our story, mission, and vision,<br />
+            and discover how we’re making tennis accessible for all.
           </p>
         </section>
 
@@ -36,7 +52,7 @@ function About() {
             <div>
               <img
                 src="/ClinicPictures/AboutUs0.jpg"
-                alt="Our Story"
+                alt="Project Breakpoint coaches youth tennis at local schools in Fullerton"
                 style={{
                   width: '100%',
                   height: '600px',
@@ -50,7 +66,7 @@ function About() {
               <h2 style={{ 
                 fontSize: '2.5rem', 
                 marginBottom: '20px', 
-                color: '#263a44',
+                color: '#2e7d32',
                 fontWeight: 'bold'
               }}>
                 Our Story
@@ -101,7 +117,7 @@ function About() {
               <h2 style={{ 
                 fontSize: '2.5rem', 
                 marginBottom: '20px', 
-                color: '#263a44',
+                color: '#2e7d32',
                 fontWeight: 'bold'
               }}>
                 Our Mission
@@ -127,7 +143,7 @@ function About() {
             <div>
               <img
                 src="/ClinicPictures/AboutUs1.JPEG"
-                alt="Our Mission"
+                alt="Free tennis coaching for low-income youth in Fullerton"
                 style={{
                   width: '100%',
                   height: '400px',
@@ -156,7 +172,7 @@ function About() {
             <div>
               <img
                 src="/ClinicPictures/AboutUs2.JPEG"
-                alt="Our Vision"
+                alt="Kids learning tennis through Project Breakpoint's non-profit programs in Fullerton"
                 style={{
                   width: '100%',
                   height: '400px',
@@ -170,7 +186,7 @@ function About() {
               <h2 style={{ 
                 fontSize: '2.5rem', 
                 marginBottom: '20px', 
-                color: '#263a44',
+                color: '#2e7d32',
                 fontWeight: 'bold'
               }}>
                 Our Vision
