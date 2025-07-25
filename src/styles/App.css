@@ -548,3 +548,30 @@ footer p {
   color: #1a2a2a;
 }
 
+/* Responsive About Page Grid */
+.about-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.about-section-grid img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+@media (max-width: 800px) {
+  .about-section-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 10px;
+  }
+  .about-section-grid img {
+    max-height: 250px;
+  }
+}
+
