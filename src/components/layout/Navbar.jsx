@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav>
       <Link to="/">
-        <img src={"./photos/logo.png"} alt="Logo" className="nav-logo" />
+        <img src="/PlayerPictures/logo.png" alt="Logo" className="nav-logo" />
       </Link>
       <div className="nav-links">
         <Link to="/">Home</Link>

@@ -80,6 +80,22 @@ function Events() {
             </div>
           </div>
         </section>
+        {/* Fullerton Move Highlight Section */}
+        <section className="events-section" style={{ background: '#f8faf8', padding: '48px 0' }}>
+          <div className="events-container">
+            <div className="event-card" style={{ maxWidth: 600, margin: '0 auto', textAlign: 'center', boxShadow: '0 4px 16px rgba(0,0,0,0.10)', borderRadius: 18, padding: 36 }}>
+              <h2 className="event-card-title" style={{ color: '#22343a', marginBottom: 16 }}>Coming This Fall: Fullerton Tennis Clinics</h2>
+              <p style={{ fontSize: '1.15rem', color: '#22343a', marginBottom: 20 }}>
+                We’re excited to announce that Project Breakpoint will be expanding to Fullerton starting around October! Stay tuned for more details about our new weekly clinics, locations, and how to get involved.
+              </p>
+              <div style={{ fontSize: 48, marginBottom: 12 }}>🎾</div>
+              <div style={{ color: '#555', fontSize: '1rem' }}>
+                If you’re in the Fullerton area and interested in joining or volunteering, <br />
+                please <a href="/contact" style={{ color: '#d6f36b', fontWeight: 700, textDecoration: 'underline' }}>contact us</a>!
+              </div>
+            </div>
+          </div>
+        </section>
         <SubscribeSection />
       </main>
       <Footer />

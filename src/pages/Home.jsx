@@ -25,15 +25,13 @@ function Home() {
         <section
           class="mission-section"
           style={{
-            background: `url(${"/photos/img1.jpg"}) center/cover no-repeat`,
+            background: `url(${"/PlayerPictures/img1.jpg"}) center/cover no-repeat`,
           }}
         >
           <div class="mission-content">
             <h2>Our Mission</h2>
             <p>
-              Breaking down barriers through tennis, we foster a welcoming
-              community that celebrates diversity and empowers individuals of
-              all ages, abilities, and backgrounds.
+            to ensure that every child, regardless of income, receives quality coaching, the right equipment, and a supportive community to discover tennis.
             </p>
           </div>
         </section>
