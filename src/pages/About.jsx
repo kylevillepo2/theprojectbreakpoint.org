@@ -126,7 +126,7 @@ function About() {
             </div>
             <div>
               <img
-                src="/ClinicPictures/AboutUs1.jpeg"
+                src="/ClinicPictures/AboutUs1.JPEG"
                 alt="Our Mission"
                 style={{
                   width: '100%',
