@@ -1,41 +1,64 @@
-// Vercel Function for email subscription
-export default async function handler(req, res) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+import clientPromise from '../lib/mongodb';
 
-  // Handle preflight requests
+export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  // Handle preflight request
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
     const { email } = req.body;
-    
-    if (!email) {
-      return res.status(400).json({ error: 'Email is required' });
+
+    // Basic email validation
+    if (!email || !email.includes('@')) {
+      return res.status(400).json({ error: 'Valid email is required' });
     }
 
-    // For now, we'll just return success
-    // In production, you'd store this in a database
-    // and send confirmation emails
-    
-    console.log('New subscription:', email);
+    // Connect to MongoDB
+    const client = await clientPromise;
+    const db = client.db('projectbreakpoint');
+    const collection = db.collection('subscribers');
+
+    // Check if email already exists
+    const existingSubscriber = await collection.findOne({ email: email.toLowerCase() });
+    if (existingSubscriber) {
+      return res.status(400).json({ error: 'Email already subscribed' });
+    }
+
+    // Add new subscriber
+    const result = await collection.insertOne({
+      email: email.toLowerCase(),
+      subscribedAt: new Date(),
+      active: true
+    });
+
+    console.log('New subscription stored in database:', email);
+
+    // Get total subscriber count
+    const totalSubscribers = await collection.countDocuments({ active: true });
 
     res.status(200).json({ 
+      success: true, 
       message: 'Successfully subscribed!',
-      subscriberCount: 1 // Placeholder
+      totalSubscribers 
     });
 
   } catch (error) {
-    console.error('Subscription error:', error);
+    console.error('Database error:', error);
     res.status(500).json({ error: 'Failed to subscribe. Please try again.' });
   }
 } 
