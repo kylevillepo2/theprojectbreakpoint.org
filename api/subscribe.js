@@ -1,4 +1,4 @@
-import clientPromise from '../lib/mongodb';
+import { MongoClient } from 'mongodb';
 
 export default async function handler(req, res) {
   // Set CORS headers
@@ -20,6 +20,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  let client;
+  
   try {
     const { email } = req.body;
 
@@ -28,8 +30,26 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Valid email is required' });
     }
 
-    // Connect to MongoDB
-    const client = await clientPromise;
+    // Connect to MongoDB directly
+    const uri = process.env.MONGODB_URI;
+    if (!uri) {
+      throw new Error('MongoDB URI not configured');
+    }
+
+    client = new MongoClient(uri, {
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+      connectTimeoutMS: 10000,
+      maxPoolSize: 1,
+      minPoolSize: 0,
+      maxIdleTimeMS: 30000,
+      retryWrites: true,
+      w: 'majority'
+    });
+
+    await client.connect();
+    console.log('Connected to MongoDB');
+
     const db = client.db('projectbreakpoint');
     const collection = db.collection('subscribers');
 
@@ -60,5 +80,11 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Database error:', error);
     res.status(500).json({ error: 'Failed to subscribe. Please try again.' });
+  } finally {
+    // Always close the connection
+    if (client) {
+      await client.close();
+      console.log('MongoDB connection closed');
+    }
   }
 } 

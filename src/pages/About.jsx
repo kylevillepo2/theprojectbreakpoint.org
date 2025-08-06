@@ -53,7 +53,7 @@ function About() {
               <img
                 src="/ClinicPictures/AboutUs0.jpg"
                 alt="Project Breakpoint coaches youth tennis at local schools in Fullerton"
-                style={{
+              style={{
                   width: '100%',
                   height: '600px',
                   objectFit: 'cover',
@@ -77,10 +77,10 @@ function About() {
                 color: '#555',
                 marginBottom: '20px'
               }}>
-                Project Breakpoint was founded by a group of college students passionate about making tennis accessible to all.
-                We believe that tennis has the power to build confidence, resilience, and community — and we are committed
-                to sharing that experience with youth from every background.
-              </p>
+              Project Breakpoint was founded by a group of college students passionate about making tennis accessible to all.
+              We believe that tennis has the power to build confidence, resilience, and community — and we are committed
+              to sharing that experience with youth from every background.
+            </p>
               <p style={{ 
                 fontSize: '1.2rem', 
                 lineHeight: '1.8', 
@@ -128,9 +128,9 @@ function About() {
                 color: '#555',
                 marginBottom: '20px'
               }}>
-                We aim to break down barriers and share the joy of tennis with youth from all backgrounds.
-                Our mission is to create inclusive, fun, and supportive spaces where kids can grow both on and off the court.
-              </p>
+              We aim to break down barriers and share the joy of tennis with youth from all backgrounds.
+              Our mission is to create inclusive, fun, and supportive spaces where kids can grow both on and off the court.
+            </p>
               <p style={{ 
                 fontSize: '1.2rem', 
                 lineHeight: '1.8', 
@@ -197,10 +197,10 @@ function About() {
                 color: '#555',
                 marginBottom: '20px'
               }}>
-                We envision a future where every child—regardless of income, location, or experience—has the opportunity
-                to learn, grow, and thrive through tennis. We hope to expand our reach nationally and develop future leaders
-                who give back to their communities through sport.
-              </p>
+              We envision a future where every child—regardless of income, location, or experience—has the opportunity
+              to learn, grow, and thrive through tennis. We hope to expand our reach nationally and develop future leaders
+              who give back to their communities through sport.
+            </p>
               <p style={{ 
                 fontSize: '1.2rem', 
                 lineHeight: '1.8', 
