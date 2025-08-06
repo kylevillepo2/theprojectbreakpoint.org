@@ -1,5 +1,3 @@
-import { MongoClient } from 'mongodb';
-
 export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -20,8 +18,6 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  let client;
-  
   try {
     const { email } = req.body;
 
@@ -30,46 +26,84 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Valid email is required' });
     }
 
-    // Connect to MongoDB directly
-    const uri = process.env.MONGODB_URI;
-    if (!uri) {
-      throw new Error('MongoDB URI not configured');
+    // Use MongoDB Atlas Data API
+    const MONGODB_API_KEY = process.env.MONGODB_API_KEY;
+    const MONGODB_CLUSTER_URL = process.env.MONGODB_CLUSTER_URL;
+    const MONGODB_DATABASE = 'projectbreakpoint';
+    const MONGODB_COLLECTION = 'subscribers';
+
+    if (!MONGODB_API_KEY || !MONGODB_CLUSTER_URL) {
+      throw new Error('MongoDB API configuration missing');
     }
 
-    client = new MongoClient(uri, {
-      serverSelectionTimeoutMS: 10000,
-      socketTimeoutMS: 45000,
-      connectTimeoutMS: 10000,
-      maxPoolSize: 1,
-      minPoolSize: 0,
-      maxIdleTimeMS: 30000,
-      retryWrites: true,
-      w: 'majority'
+    // Check if email already exists
+    const findUrl = `${MONGODB_CLUSTER_URL}/data/v1/app/${MONGODB_DATABASE}/endpoint/data/v1/action/findOne`;
+    const findResponse = await fetch(findUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': MONGODB_API_KEY,
+      },
+      body: JSON.stringify({
+        dataSource: 'Projectbreakpoint-cluster',
+        database: MONGODB_DATABASE,
+        collection: MONGODB_COLLECTION,
+        filter: { email: email.toLowerCase() }
+      })
     });
 
-    await client.connect();
-    console.log('Connected to MongoDB');
-
-    const db = client.db('projectbreakpoint');
-    const collection = db.collection('subscribers');
-
-    // Check if email already exists
-    const existingSubscriber = await collection.findOne({ email: email.toLowerCase() });
-    if (existingSubscriber) {
+    const findResult = await findResponse.json();
+    
+    if (findResult.document) {
       return res.status(400).json({ error: 'Email already subscribed' });
     }
 
     // Add new subscriber
-    const result = await collection.insertOne({
-      email: email.toLowerCase(),
-      subscribedAt: new Date(),
-      active: true
+    const insertUrl = `${MONGODB_CLUSTER_URL}/data/v1/app/${MONGODB_DATABASE}/endpoint/data/v1/action/insertOne`;
+    const insertResponse = await fetch(insertUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': MONGODB_API_KEY,
+      },
+      body: JSON.stringify({
+        dataSource: 'Projectbreakpoint-cluster',
+        database: MONGODB_DATABASE,
+        collection: MONGODB_COLLECTION,
+        document: {
+          email: email.toLowerCase(),
+          subscribedAt: new Date().toISOString(),
+          active: true
+        }
+      })
     });
+
+    const insertResult = await insertResponse.json();
+    
+    if (!insertResult.insertedId) {
+      throw new Error('Failed to insert subscriber');
+    }
 
     console.log('New subscription stored in database:', email);
 
     // Get total subscriber count
-    const totalSubscribers = await collection.countDocuments({ active: true });
+    const countUrl = `${MONGODB_CLUSTER_URL}/data/v1/app/${MONGODB_DATABASE}/endpoint/data/v1/action/count`;
+    const countResponse = await fetch(countUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': MONGODB_API_KEY,
+      },
+      body: JSON.stringify({
+        dataSource: 'Projectbreakpoint-cluster',
+        database: MONGODB_DATABASE,
+        collection: MONGODB_COLLECTION,
+        filter: { active: true }
+      })
+    });
+
+    const countResult = await countResponse.json();
+    const totalSubscribers = countResult.count || 0;
 
     res.status(200).json({ 
       success: true, 
@@ -78,13 +112,7 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Database error:', error);
+    console.error('API error:', error);
     res.status(500).json({ error: 'Failed to subscribe. Please try again.' });
-  } finally {
-    // Always close the connection
-    if (client) {
-      await client.close();
-      console.log('MongoDB connection closed');
-    }
   }
 } 
