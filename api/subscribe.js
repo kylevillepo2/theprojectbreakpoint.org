@@ -1,5 +1,4 @@
-import fs from 'fs';
-import path from 'path';
+import { MongoClient } from 'mongodb';
 
 export default async function handler(req, res) {
   // Set CORS headers to allow requests from your website
@@ -17,6 +16,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  let client;
+
   try {
     // Get the email from the request body
     const { email } = req.body;
@@ -26,25 +27,54 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Valid email is required' });
     }
 
-    // Create a simple subscriber object
+    // Connect to MongoDB
+    const uri = process.env.MONGODB_URI;
+    if (!uri) {
+      throw new Error('MongoDB connection string not found');
+    }
+
+    client = new MongoClient(uri);
+    await client.connect();
+
+    // Get the database and collection
+    const db = client.db('projectbreakpoint');
+    const collection = db.collection('subscribers');
+
+    // Check if email already exists
+    const existingSubscriber = await collection.findOne({ email: email.toLowerCase() });
+    if (existingSubscriber) {
+      return res.status(400).json({ error: 'Email already subscribed' });
+    }
+
+    // Create a subscriber object
     const subscriber = {
       email: email.toLowerCase(),
       subscribedAt: new Date().toISOString(),
       id: Date.now().toString()
     };
 
-    // For now, we'll just log it to the console
-    // (In production, you'd save to a database)
-    console.log('New subscription:', subscriber);
+    // Insert the subscriber into the database
+    await collection.insertOne(subscriber);
+
+    // Get total subscriber count
+    const totalSubscribers = await collection.countDocuments();
+
+    console.log('New subscription stored in database:', subscriber);
 
     // Return success
     res.status(200).json({ 
       success: true, 
-      message: 'Successfully subscribed!' 
+      message: 'Successfully subscribed!',
+      totalSubscribers
     });
 
   } catch (error) {
     console.error('Error in subscribe API:', error);
     res.status(500).json({ error: 'Failed to subscribe. Please try again.' });
+  } finally {
+    // Always close the connection
+    if (client) {
+      await client.close();
+    }
   }
 } 
