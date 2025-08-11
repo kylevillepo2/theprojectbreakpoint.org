@@ -4,6 +4,7 @@ import Footer from "../components/layout/Footer";
 import FounderCard from "../components/FounderCard";
 import { founders } from "../data/founders";
 import { Helmet } from "react-helmet";
+import SubscribeSection from "../components/shared/SubscribeSection";
 
 function Home() {
   return (
@@ -69,13 +70,7 @@ function Home() {
         </div>
 
         {/* Subscribe Section */}
-        <div className="subscribe-section">
-          <h3>Stay Updated on Our Programs</h3>
-          <form>
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
+        <SubscribeSection />
       </main>
       <Footer />
     </div>
