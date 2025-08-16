@@ -32,7 +32,7 @@ function About() {
             lineHeight: 1.3
           }}>
             Empowering youth through tennis, one serve at a time. Learn about our story, mission, and vision,<br />
-            and discover how we’re making tennis accessible for all.
+            and discover how we're making tennis accessible for all.
           </p>
         </section>
 
@@ -53,7 +53,8 @@ function About() {
               <img
                 src="/ClinicPictures/AboutUs0.jpg"
                 alt="Project Breakpoint coaches youth tennis at local schools in Fullerton"
-              style={{
+                loading="lazy"
+                style={{
                   width: '100%',
                   height: '600px',
                   objectFit: 'cover',
@@ -144,6 +145,7 @@ function About() {
               <img
                 src="/ClinicPictures/AboutUs1.JPEG"
                 alt="Free tennis coaching for low-income youth in Fullerton"
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: '400px',
@@ -173,6 +175,7 @@ function About() {
               <img
                 src="/ClinicPictures/AboutUs2.JPEG"
                 alt="Kids learning tennis through Project Breakpoint's non-profit programs in Fullerton"
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: '400px',
@@ -238,8 +241,7 @@ function About() {
               <div style={{
                 background: 'rgba(255,255,255,0.1)',
                 padding: '30px',
-                borderRadius: '15px',
-                backdropFilter: 'blur(10px)'
+                borderRadius: '15px'
               }}>
                 <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🎾</div>
                 <h3 style={{ fontSize: '1.3rem', marginBottom: '10px', color: '#d6f36b' }}>Teaching Life Skills</h3>
@@ -248,8 +250,7 @@ function About() {
               <div style={{
                 background: 'rgba(255,255,255,0.1)',
                 padding: '30px',
-                borderRadius: '15px',
-                backdropFilter: 'blur(10px)'
+                borderRadius: '15px'
               }}>
                 <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🌱</div>
                 <h3 style={{ fontSize: '1.3rem', marginBottom: '10px', color: '#d6f36b' }}>Fostering Inclusivity</h3>
@@ -258,8 +259,7 @@ function About() {
               <div style={{
                 background: 'rgba(255,255,255,0.1)',
                 padding: '30px',
-                borderRadius: '15px',
-                backdropFilter: 'blur(10px)'
+                borderRadius: '15px'
               }}>
                 <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🤝</div>
                 <h3 style={{ fontSize: '1.3rem', marginBottom: '10px', color: '#d6f36b' }}>Building Partnerships</h3>
@@ -268,8 +268,7 @@ function About() {
               <div style={{
                 background: 'rgba(255,255,255,0.1)',
                 padding: '30px',
-                borderRadius: '15px',
-                backdropFilter: 'blur(10px)'
+                borderRadius: '15px'
               }}>
                 <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🧠</div>
                 <h3 style={{ fontSize: '1.3rem', marginBottom: '10px', color: '#d6f36b' }}>Supporting Wellness</h3>
