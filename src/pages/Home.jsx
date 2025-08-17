@@ -16,7 +16,7 @@ function Home() {
       <Navbar />
       <main>
         {/* Welcome Section */}
-        <section className="welcome-section" style={{ textAlign: 'center', padding: '60px 0' }}>
+        <section className="welcome-section bg-gray-50" style={{ textAlign: 'center', padding: '60px 0' }}>
           <h1 style={{
             color: '#2e7d32',
             fontWeight: 'bold',
