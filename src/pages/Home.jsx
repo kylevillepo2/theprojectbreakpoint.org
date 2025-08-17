@@ -4,6 +4,7 @@ import Footer from "../components/layout/Footer";
 import FounderCard from "../components/FounderCard";
 import { founders } from "../data/founders";
 import { Helmet } from "react-helmet";
+import { MissionSection } from "../components/MissionSection";
 import SubscribeSection from "../components/shared/SubscribeSection";
 
 function Home() {
@@ -39,19 +40,7 @@ function Home() {
         </section>
 
         {/* Mission Section */}
-        <section
-          className="mission-section"
-          style={{
-            background: `url(${"/ClinicPictures/MissionBackground.jpg"}) center/cover no-repeat`,
-          }}
-        >
-          <div className="mission-content">
-            <h2>Our Mission</h2>
-            <p>
-              To ensure that every child, regardless of income, receives quality coaching, the right equipment, and a supportive community to discover tennis.
-            </p>
-          </div>
-        </section>
+        <MissionSection />
 
         {/* Founders Section */}
         <div className="founders-section">
