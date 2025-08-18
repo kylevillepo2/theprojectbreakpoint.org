@@ -5,7 +5,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Events from "./pages/Events";
 import "./styles/App.css";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         </Routes>
       </div>
       <Analytics />
+      <SpeedInsights />
     </Router>
   );
 }
