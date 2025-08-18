@@ -67,8 +67,7 @@ nav a:hover::after {
 
 /* Main Content */
 main {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   padding-bottom: 40px;
 }
 
@@ -93,6 +92,7 @@ main {
 .founders-section {
   background-color: #f8faf8;
   padding: 60px 20px;
+  width: 100%;
 }
 .founders-title {
   font-size: 2.5em;
@@ -108,6 +108,9 @@ main {
   flex-wrap: wrap;
   /* This margin helps create additional space below each row of founders */
   margin-bottom: 60px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* Only the last .founders-container won't need margin-bottom,
        so the simplest approach is to apply margin to each container row. 

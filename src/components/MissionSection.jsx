@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function MissionSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -14,19 +15,10 @@ export function MissionSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Mission Content */}
-          <div className="text-white space-y-8">
-            {/* Logo */}
-            <div className="mb-8">
-              <img
-                src="/PlayerPictures/logo.png"
-                alt="Project Breakpoint Logo"
-                className="w-96 h-auto"
-              />
-            </div>
-
+      <div className="relative z-10 w-full py-12">
+        <div className="flex justify-center items-center w-full">
+          {/* Mission Content */}
+          <div className="text-white space-y-8 px-8 lg:px-16 max-w-4xl">
             {/* Mission Text */}
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -42,36 +34,36 @@ export function MissionSection() {
               </p>
             </div>
 
-            {/* Call to Action */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <button className="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-                Get Involved
-              </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-                Learn More
-              </button>
+            {/* Key Statistics */}
+            <div className="grid grid-cols-2 gap-8 pt-6">
+              <div className="text-center p-8 bg-white/10 rounded-lg backdrop-blur-sm">
+                <div className="text-4xl font-bold text-accent mb-2">200+</div>
+                <div className="text-lg text-gray-200 font-semibold">Youth Served</div>
+              </div>
+              <div className="text-center p-8 bg-white/10 rounded-lg backdrop-blur-sm">
+                <div className="text-4xl font-bold text-accent mb-2">100%</div>
+                <div className="text-lg text-gray-200 font-semibold">Free Programs</div>
+              </div>
             </div>
-          </div>
 
-          {/* Right Column - Stats or Additional Content */}
-          <div className="text-white space-y-8">
-            <div className="grid grid-cols-2 gap-6">
-              <div className="text-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-                <div className="text-3xl font-bold text-accent">200+</div>
-                <div className="text-sm text-gray-300">Youth Served</div>
-              </div>
-              <div className="text-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-                <div className="text-3xl font-bold text-accent">5</div>
-                <div className="text-sm text-gray-300">Schools Partnered</div>
-              </div>
-              <div className="text-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-                <div className="text-3xl font-bold text-accent">100%</div>
-                <div className="text-sm text-gray-300">Free Programs</div>
-              </div>
-              <div className="text-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
-                <div className="text-3xl font-bold text-accent">50+</div>
-                <div className="text-sm text-gray-300">Volunteers</div>
-              </div>
+            {/* Call to Action */}
+            <div className="flex flex-col sm:flex-row gap-6 pt-8 justify-center">
+              <Link to="/events">
+                <button 
+                  className="bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50 shadow-lg hover:shadow-xl"
+                  aria-label="Get involved with Project Breakpoint programs"
+                >
+                  Get Involved
+                </button>
+              </Link>
+              <Link to="/about">
+                <button 
+                  className="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-10 rounded-xl text-lg border-2 border-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50 backdrop-blur-sm shadow-lg hover:shadow-xl"
+                  aria-label="Learn more about Project Breakpoint"
+                >
+                  Learn More
+                </button>
+              </Link>
             </div>
           </div>
         </div>
