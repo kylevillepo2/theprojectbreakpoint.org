@@ -200,11 +200,11 @@ function Donate() {
                 <div className="bg-white rounded-lg p-6">
                   <h4 className="text-lg font-semibold text-gray-800 mb-4">Scan QR Code</h4>
                   <div className="flex justify-center">
-                    <img 
-                      src="/venmoQR.jpg" 
-                      alt="Venmo QR Code" 
-                      className="w-64 h-64 md:w-80 md:h-80 object-contain rounded-lg shadow-md"
-                    />
+                                                <img
+                              src="/VenmoQR.JPG"
+                              alt="Venmo QR Code"
+                              className="w-64 h-64 md:w-80 md:h-80 object-contain rounded-lg shadow-md"
+                            />
                   </div>
                   <p className="text-sm text-gray-600 mt-2">Scan with your phone's camera</p>
                 </div>
