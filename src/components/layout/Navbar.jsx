@@ -11,12 +11,28 @@ function Navbar() {
         <Link 
           to="/donate" 
           className="donate-btn"
+          onClick={() => window.scrollTo(0, 0)}
         >
           Donate
         </Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/events">Events</Link>
+        <Link 
+          to="/about"
+          onClick={() => window.scrollTo(0, 0)}
+        >
+          About
+        </Link>
+        <Link 
+          to="/contact"
+          onClick={() => window.scrollTo(0, 0)}
+        >
+          Contact
+        </Link>
+        <Link 
+          to="/events"
+          onClick={() => window.scrollTo(0, 0)}
+        >
+          Events
+        </Link>
       </div>
     </nav>
   );

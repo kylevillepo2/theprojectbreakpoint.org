@@ -1,71 +1,251 @@
-# Getting Started with Create React App
+# 🎾 Project Breakpoint
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive website for Project Breakpoint - a tennis non-profit organization providing free tennis programs and mentorship to underserved youth in Fullerton and San Diego.
 
-## Available Scripts
+## 🌟 About Project Breakpoint
 
-In the project directory, you can run:
+Project Breakpoint is dedicated to breaking down barriers through tennis, providing free tennis instruction and mentorship to underserved youth. Our mission is to create pathways to college scholarships and lifelong success through the sport of tennis.
 
-### `npm start`
+### Key Features:
+- **Free Programs**: 100% free tennis programs for all participants
+- **Professional Coaching**: Qualified tennis instructors and mentorship
+- **Community Building**: Strong relationships and support networks
+- **College Pathways**: Creating opportunities for scholarships and higher education
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Website Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🏠 **Home Page**
+- **Hero Section**: Compelling mission statement with background imagery
+- **Impact Statistics**: Real-time statistics (200+ kids served, 100% free programs)
+- **Core Values**: Accessibility, Excellence, and Community
+- **Call-to-Action**: Direct links to events and donation pages
 
-### `npm test`
+### 👥 **About Page**
+- **Organization Story**: Mission, vision, and impact
+- **Impact Statistics**: Visual representation of our reach
+- **Team Information**: Founder profiles and backgrounds
+- **Modern Design**: Tailwind CSS styling with responsive layout
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 📅 **Events Page**
+- **Event Listings**: Dynamic event management system
+- **Countdown Timer**: Interactive countdown for upcoming events
+- **Registration System**: Integrated popup forms for volunteer registration
+- **Partnership Inquiries**: Dedicated form for partnership opportunities
+- **Email Notifications**: Stay updated on program launches
 
-### `npm run build`
+### 💰 **Donation Page**
+- **Venmo Integration**: Direct payment processing via Venmo
+- **QR Code**: Easy mobile scanning for donations
+- **Impact Stories**: Showcasing how donations make a difference
+- **Multiple Amounts**: Preset and custom donation options
+- **Transparent Funding**: Clear breakdown of where donations go
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 📞 **Contact Page**
+- **Contact Form**: Integrated form with MongoDB backend
+- **Service Areas**: Fullerton, San Diego, and Orange County
+- **Multiple Contact Methods**: Email, phone, and form submissions
+- **Real-time Validation**: Form validation and error handling
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Technology Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **Frontend**
+- **React.js**: Modern JavaScript framework for building user interfaces
+- **React Router**: Client-side routing for single-page application
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
+- **React Helmet**: SEO optimization and meta tag management
 
-### `npm run eject`
+### **Backend**
+- **Vercel Functions**: Serverless API endpoints
+- **MongoDB**: NoSQL database for storing contact form submissions
+- **MongoDB Atlas**: Cloud database service
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### **Deployment**
+- **Vercel**: Hosting and deployment platform
+- **GitHub**: Version control and code repository
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **External Integrations**
+- **Venmo**: Payment processing for donations
+- **Google Forms**: Volunteer registration (external link)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📁 Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+theprojectbreakpoint.org/
+├── public/                 # Static assets
+│   ├── ClinicPictures/    # Tennis clinic images
+│   ├── PlayerPictures/    # Player and logo images
+│   └── venmoQR.jpg        # Venmo QR code
+├── src/
+│   ├── components/        # Reusable React components
+│   │   ├── layout/        # Layout components (Navbar, Footer)
+│   │   └── shared/        # Shared components
+│   ├── pages/            # Page components
+│   │   ├── Home.jsx      # Home page
+│   │   ├── About.jsx     # About page
+│   │   ├── Contact.jsx   # Contact page
+│   │   ├── Events.jsx    # Events page
+│   │   └── Donate.jsx    # Donation page
+│   ├── styles/           # CSS files
+│   └── data/             # Static data files
+├── api/                  # Vercel API functions
+│   └── contact.js        # Contact form API endpoint
+└── README.md            # This file
+```
 
-## Learn More
+## 🚀 Getting Started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn package manager
+- MongoDB Atlas account (for backend functionality)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Installation
 
-### Code Splitting
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/kylevillepo2/theprojectbreakpoint.org.git
+   cd theprojectbreakpoint.org
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-### Analyzing the Bundle Size
+3. **Set up environment variables**
+   Create a `.env.local` file in the root directory:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   MONGODB_DB=projectbreakpoint
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-### Making a Progressive Web App
+5. **Open your browser**
+   Navigate to `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Building for Production
 
-### Advanced Configuration
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔧 Configuration
 
-### Deployment
+### MongoDB Setup
+1. Create a MongoDB Atlas account
+2. Create a new cluster
+3. Get your connection string
+4. Add it to your environment variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Vercel Deployment
+1. Connect your GitHub repository to Vercel
+2. Add environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
 
-### `npm run build` fails to minify
+## 📧 Contact Form Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# theprojectbreakpoint.org
+The contact form is fully integrated with MongoDB and includes:
+- **Form Validation**: Client-side and server-side validation
+- **Email Notifications**: Automatic email alerts for new submissions
+- **Data Storage**: All submissions stored in MongoDB
+- **Error Handling**: Comprehensive error handling and user feedback
+
+### API Endpoint
+- **URL**: `/api/contact`
+- **Method**: POST
+- **Data**: Name, email, subject, inquiry type, and message
+
+## 🎨 Design Features
+
+### **Responsive Design**
+- Mobile-first approach
+- Tablet and desktop optimized
+- Touch-friendly interfaces
+
+### **Modern UI/UX**
+- Clean, professional design
+- Consistent color scheme (green/emerald theme)
+- Smooth animations and transitions
+- Accessible design principles
+
+### **Interactive Elements**
+- Hover effects on cards and buttons
+- Loading states for form submissions
+- Success/error feedback messages
+- Modal popups for forms
+
+## 🤝 Contributing
+
+We welcome contributions to improve Project Breakpoint's website!
+
+### How to Contribute
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Guidelines
+- Follow React best practices
+- Use Tailwind CSS for styling
+- Maintain responsive design
+- Test on multiple devices
+- Update documentation as needed
+
+## 📱 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## 🔒 Security
+
+- Form validation and sanitization
+- Secure API endpoints
+- Environment variable protection
+- HTTPS enforcement in production
+
+## 📊 Analytics
+
+- Vercel Analytics integration
+- Performance monitoring
+- User behavior tracking
+- Conversion tracking
+
+## 🚀 Deployment
+
+The website is automatically deployed to Vercel on every push to the main branch.
+
+### Production URL
+- **Website**: [projectbreakpoint.org](https://projectbreakpoint.org)
+- **GitHub**: [github.com/kylevillepo2/theprojectbreakpoint.org](https://github.com/kylevillepo2/theprojectbreakpoint.org)
+
+## 📞 Support
+
+For technical support or questions about the website:
+- **Email**: proj.breakpoint@gmail.com
+- **GitHub Issues**: [Create an issue](https://github.com/kylevillepo2/theprojectbreakpoint.org/issues)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **React.js** - For the amazing frontend framework
+- **Tailwind CSS** - For the utility-first CSS framework
+- **Vercel** - For hosting and deployment
+- **MongoDB** - For the database solution
+- **Our Volunteers** - For making Project Breakpoint possible
+
+---
+
+**Made with ❤️ for the tennis community**
+
+*Project Breakpoint - Breaking Barriers Through Tennis*
