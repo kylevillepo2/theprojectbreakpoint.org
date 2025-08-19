@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
@@ -6,6 +6,66 @@ import SubscribeSection from "../components/shared/SubscribeSection";
 import { Helmet } from "react-helmet";
 
 function About() {
+  // Volunteer popup state
+  const [showRegistrationPopup, setShowRegistrationPopup] = useState(false);
+  const [registrationForm, setRegistrationForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    experience: 'beginner',
+    message: ''
+  });
+  const [isRegistrationSubmitting, setIsRegistrationSubmitting] = useState(false);
+  const [registrationSubmitStatus, setRegistrationSubmitStatus] = useState(null);
+
+  const handleRegistrationSubmit = async (e) => {
+    e.preventDefault();
+    setIsRegistrationSubmitting(true);
+    setRegistrationSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: registrationForm.name,
+          email: registrationForm.email,
+          subject: 'Fullerton Volunteer Registration',
+          inquiryType: 'volunteer',
+          message: `
+Phone: ${registrationForm.phone}
+Experience Level: ${registrationForm.experience}
+Message: ${registrationForm.message}
+          `.trim()
+        }),
+      });
+
+      if (response.ok) {
+        setRegistrationSubmitStatus('success');
+        setRegistrationForm({
+          name: '',
+          email: '',
+          phone: '',
+          experience: 'beginner',
+          message: ''
+        });
+        setTimeout(() => {
+          setShowRegistrationPopup(false);
+          setRegistrationSubmitStatus(null);
+        }, 2000);
+      } else {
+        setRegistrationSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting registration form:', error);
+      setRegistrationSubmitStatus('error');
+    } finally {
+      setIsRegistrationSubmitting(false);
+    }
+  };
+
   return (
     <div>
       <Helmet>
@@ -205,13 +265,12 @@ function About() {
               Join us in making tennis accessible to every child. Whether you want to volunteer, donate, or enroll your child, we'd love to hear from you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/events" 
-                onClick={() => window.scrollTo(0, 0)}
+              <button 
+                onClick={() => setShowRegistrationPopup(true)}
                 className="bg-white text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 Volunteer With Us
-              </Link>
+              </button>
               <Link 
                 to="/contact" 
                 onClick={() => window.scrollTo(0, 0)}
@@ -226,6 +285,134 @@ function About() {
         <SubscribeSection />
       </main>
       <Footer />
+
+      {/* Registration Popup */}
+      {showRegistrationPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-8 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div className="text-center">
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Volunteer Registration
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Join our Fullerton volunteer program! We'll mentor you in coaching tennis to youth.
+              </p>
+              
+              <form onSubmit={handleRegistrationSubmit} className="space-y-4 text-left">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="regName" className="block text-sm font-medium text-gray-700 mb-1">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="regName"
+                      value={registrationForm.name}
+                      onChange={(e) => setRegistrationForm({...registrationForm, name: e.target.value})}
+                      placeholder="Your full name"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="regEmail" className="block text-sm font-medium text-gray-700 mb-1">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="regEmail"
+                      value={registrationForm.email}
+                      onChange={(e) => setRegistrationForm({...registrationForm, email: e.target.value})}
+                      placeholder="your@email.com"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="regPhone" className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="regPhone"
+                    value={registrationForm.phone}
+                    onChange={(e) => setRegistrationForm({...registrationForm, phone: e.target.value})}
+                    placeholder="(555) 123-4567"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="regExperience" className="block text-sm font-medium text-gray-700 mb-1">
+                    Tennis Experience Level
+                  </label>
+                  <select
+                    id="regExperience"
+                    value={registrationForm.experience}
+                    onChange={(e) => setRegistrationForm({...registrationForm, experience: e.target.value})}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                  >
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="none">No Experience</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="regMessage" className="block text-sm font-medium text-gray-700 mb-1">
+                    Why do you want to volunteer? *
+                  </label>
+                  <textarea
+                    id="regMessage"
+                    value={registrationForm.message}
+                    onChange={(e) => setRegistrationForm({...registrationForm, message: e.target.value})}
+                    placeholder="Tell us about your interest in volunteering..."
+                    required
+                    rows={3}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200 resize-none"
+                  />
+                </div>
+                
+                <div className="flex gap-3 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowRegistrationPopup(false)}
+                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isRegistrationSubmitting}
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isRegistrationSubmitting ? 'Submitting...' : 'Submit Registration'}
+                  </button>
+                </div>
+              </form>
+
+              {registrationSubmitStatus === 'success' && (
+                <div className="mt-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+                  ✅ Thank you! We'll contact you soon about volunteering opportunities.
+                </div>
+              )}
+              {registrationSubmitStatus === 'error' && (
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+                  ❌ Something went wrong. Please try again.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
