@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import SubscribeSection from "../components/shared/SubscribeSection";
@@ -7,6 +8,23 @@ import { Helmet } from "react-helmet";
 function Events() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [timeLeft, setTimeLeft] = useState({days: 0, hours: 0, minutes: 0, seconds: 0});
+  const [showPopup, setShowPopup] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  
+  // Partnership popup state
+  const [showPartnershipPopup, setShowPartnershipPopup] = useState(false);
+  const [partnershipForm, setPartnershipForm] = useState({
+    name: '',
+    email: '',
+    organization: '',
+    phone: '',
+    partnershipType: 'event-hosting',
+    message: ''
+  });
+  const [isPartnershipSubmitting, setIsPartnershipSubmitting] = useState(false);
+  const [partnershipSubmitStatus, setPartnershipSubmitStatus] = useState(null);
 
   // Event categories
   const categories = [
@@ -79,6 +97,94 @@ function Events() {
     }
   };
 
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'Email Notification Signup',
+          email: email,
+          subject: 'Fullerton Launch Notification Request',
+          inquiryType: 'enrollment',
+          message: `User signed up for email notifications about the Fullerton launch. Email: ${email}`
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setEmail('');
+        setTimeout(() => {
+          setShowPopup(false);
+          setSubmitStatus(null);
+        }, 2000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handlePartnershipSubmit = async (e) => {
+    e.preventDefault();
+    setIsPartnershipSubmitting(true);
+    setPartnershipSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: partnershipForm.name,
+          email: partnershipForm.email,
+          subject: `Partnership Inquiry: ${partnershipForm.partnershipType}`,
+          inquiryType: 'partnership',
+          message: `
+Organization: ${partnershipForm.organization}
+Phone: ${partnershipForm.phone}
+Partnership Type: ${partnershipForm.partnershipType}
+Message: ${partnershipForm.message}
+          `.trim()
+        }),
+      });
+
+      if (response.ok) {
+        setPartnershipSubmitStatus('success');
+        setPartnershipForm({
+          name: '',
+          email: '',
+          organization: '',
+          phone: '',
+          partnershipType: 'event-hosting',
+          message: ''
+        });
+        setTimeout(() => {
+          setShowPartnershipPopup(false);
+          setPartnershipSubmitStatus(null);
+        }, 2000);
+      } else {
+        setPartnershipSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting partnership form:', error);
+      setPartnershipSubmitStatus('error');
+    } finally {
+      setIsPartnershipSubmitting(false);
+    }
+  };
+
   return (
     <div>
       <Helmet>
@@ -134,7 +240,10 @@ function Events() {
               </div>
             </div>
 
-            <button className="bg-white text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <button 
+              onClick={() => setShowPopup(true)}
+              className="bg-white text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
               Get Notified When Registration Opens
             </button>
           </div>
@@ -258,7 +367,7 @@ function Events() {
                        >
                          {event.registration === 'Open' ? 'Register Now' : 'Learn More'}
                        </a>
-                    </div>
+              </div>
                   </div>
                 ))}
               </div>
@@ -277,12 +386,19 @@ function Events() {
               We'd love to hear from you!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <button 
+                onClick={() => setShowPartnershipPopup(true)}
+                className="bg-white text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
                 Partner With Us
               </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 bg-transparent">
+              <Link 
+                to="/contact" 
+                onClick={() => window.scrollTo(0, 0)}
+                className="border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 bg-transparent"
+              >
                 Contact Us
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -290,6 +406,215 @@ function Events() {
         <SubscribeSection />
       </main>
       <Footer />
+
+      {/* Email Notification Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
+            <div className="text-center">
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Stay Updated!
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Enter your email to stay updated on our programs and be notified when registration opens for our Fullerton tennis clinics.
+              </p>
+              
+              <form onSubmit={handleEmailSubmit} className="space-y-4">
+                <div>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                  />
+                </div>
+                
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowPopup(false)}
+                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Notify Me'}
+                  </button>
+                </div>
+              </form>
+
+              {submitStatus === 'success' && (
+                <div className="mt-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+                  ✅ Thank you! You'll be notified when registration opens.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+                  ❌ Something went wrong. Please try again.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Partnership Popup */}
+      {showPartnershipPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-8 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div className="text-center">
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Partner With Us
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Tell us about your organization and how you'd like to partner with Project Breakpoint.
+              </p>
+              
+              <form onSubmit={handlePartnershipSubmit} className="space-y-4 text-left">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      value={partnershipForm.name}
+                      onChange={(e) => setPartnershipForm({...partnershipForm, name: e.target.value})}
+                      placeholder="Your full name"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={partnershipForm.email}
+                      onChange={(e) => setPartnershipForm({...partnershipForm, email: e.target.value})}
+                      placeholder="your@email.com"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">
+                      Organization *
+                    </label>
+                    <input
+                      type="text"
+                      id="organization"
+                      value={partnershipForm.organization}
+                      onChange={(e) => setPartnershipForm({...partnershipForm, organization: e.target.value})}
+                      placeholder="Your organization name"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      value={partnershipForm.phone}
+                      onChange={(e) => setPartnershipForm({...partnershipForm, phone: e.target.value})}
+                      placeholder="(555) 123-4567"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="partnershipType" className="block text-sm font-medium text-gray-700 mb-1">
+                    Partnership Type *
+                  </label>
+                  <select
+                    id="partnershipType"
+                    value={partnershipForm.partnershipType}
+                    onChange={(e) => setPartnershipForm({...partnershipForm, partnershipType: e.target.value})}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                  >
+                    <option value="event-hosting">Event Hosting</option>
+                    <option value="sponsorship">Sponsorship</option>
+                    <option value="volunteer-program">Volunteer Program</option>
+                    <option value="equipment-donation">Equipment Donation</option>
+                    <option value="facility-partnership">Facility Partnership</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                    Tell us about your partnership idea *
+                  </label>
+                  <textarea
+                    id="message"
+                    value={partnershipForm.message}
+                    onChange={(e) => setPartnershipForm({...partnershipForm, message: e.target.value})}
+                    placeholder="Describe how you'd like to partner with us..."
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200 resize-none"
+                  />
+                </div>
+                
+                <div className="flex gap-3 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowPartnershipPopup(false)}
+                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isPartnershipSubmitting}
+                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isPartnershipSubmitting ? 'Submitting...' : 'Submit Partnership Request'}
+                  </button>
+                </div>
+              </form>
+
+              {partnershipSubmitStatus === 'success' && (
+                <div className="mt-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+                  ✅ Thank you! We'll get back to you soon about your partnership request.
+                </div>
+              )}
+              {partnershipSubmitStatus === 'error' && (
+                <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+                  ❌ Something went wrong. Please try again.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

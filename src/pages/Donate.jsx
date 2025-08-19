@@ -15,7 +15,7 @@ function Donate() {
   ];
 
   const handleVenmoDonation = (amount) => {
-    const venmoUrl = `https://venmo.com/projectbreakpoint?txn=pay&recipients=projectbreakpoint&amount=${amount}&note=Donation%20to%20Project%20Breakpoint%20-%20Tennis%20for%20Youth`;
+    const venmoUrl = `https://venmo.com/projectbreakpoint?txn=pay&amount=${amount}&note=Donation%20to%20Project%20Breakpoint%20-%20Tennis%20for%20Youth`;
     window.open(venmoUrl, '_blank');
   };
 
@@ -185,12 +185,32 @@ function Donate() {
                 We use Venmo for secure, instant donations. Your payment information is protected, 
                 and you'll receive a confirmation immediately.
               </p>
-              <div className="bg-white rounded-lg p-6 inline-block">
-                <div className="flex items-center space-x-4">
-                  <div className="text-2xl">@projectbreakpoint</div>
-                  <div className="text-sm text-gray-600">Venmo Handle</div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                {/* Venmo Handle */}
+                <div className="bg-white rounded-lg p-6">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-4">Venmo Handle</h4>
+                  <div className="flex items-center justify-center space-x-4">
+                    <div className="text-3xl font-bold text-blue-600">@projectbreakpoint</div>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-2">Search for us on Venmo</p>
+                </div>
+                
+                {/* QR Code */}
+                <div className="bg-white rounded-lg p-6">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-4">Scan QR Code</h4>
+                  <div className="flex justify-center">
+                    <img 
+                      src="/venmoQR.jpg" 
+                      alt="Venmo QR Code" 
+                      className="w-64 h-64 md:w-80 md:h-80 object-contain rounded-lg shadow-md"
+                    />
+                  </div>
+                  <p className="text-sm text-gray-600 mt-2">Scan with your phone's camera</p>
                 </div>
               </div>
+              
+
             </div>
           </div>
         </section>

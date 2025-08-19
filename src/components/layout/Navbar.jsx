@@ -8,16 +8,15 @@ function Navbar() {
         <img src="/PlayerPictures/logo.png" alt="Logo" className="nav-logo" />
       </Link>
       <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/events">Events</Link>
         <Link 
           to="/donate" 
           className="donate-btn"
         >
           Donate
         </Link>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/events">Events</Link>
       </div>
     </nav>
   );

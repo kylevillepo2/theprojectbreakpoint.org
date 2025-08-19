@@ -283,9 +283,9 @@ const Contact = () => {
                     <div>
                       <h4 className="text-lg font-semibold text-green-700 mb-2">Service Areas</h4>
                       <p className="text-gray-700">
-                        <strong>Fullerton, CA</strong> - Our main location<br />
-                        <strong>San Diego, CA</strong> - Weekly programs<br />
-                        <strong>Orange County</strong> - Expanding soon
+                        <strong>Fullerton, CA</strong><br />
+                        <strong>San Diego, CA</strong><br />
+                        <strong>Orange County</strong>
                       </p>
                     </div>
                   </div>

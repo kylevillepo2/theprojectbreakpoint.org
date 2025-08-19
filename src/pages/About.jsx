@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import SubscribeSection from "../components/shared/SubscribeSection";
@@ -204,12 +205,20 @@ function About() {
               Join us in making tennis accessible to every child. Whether you want to volunteer, donate, or enroll your child, we'd love to hear from you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <Link 
+                to="/events" 
+                onClick={() => window.scrollTo(0, 0)}
+                className="bg-white text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
                 Volunteer With Us
-              </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 bg-transparent">
+              </Link>
+              <Link 
+                to="/contact" 
+                onClick={() => window.scrollTo(0, 0)}
+                className="border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 bg-transparent"
+              >
                 Contact Us
-              </button>
+              </Link>
             </div>
           </div>
         </section>
