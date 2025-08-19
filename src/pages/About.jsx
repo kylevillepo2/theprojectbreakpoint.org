@@ -13,267 +13,203 @@ function About() {
       </Helmet>
       <Navbar />
       <main>
-        {/* Welcome Section (matching Home) */}
-        <section className="welcome-section" style={{ textAlign: 'center', padding: '60px 0' }}>
-          <h1 style={{
-            color: '#2e7d32',
-            fontWeight: 'bold',
-            fontSize: '2.5rem',
-            marginBottom: '32px',
-            letterSpacing: 1
-          }}>
-            About Project Breakpoint
-          </h1>
-          <p style={{
-            fontSize: '1.25rem',
-            color: '#333',
-            maxWidth: 900,
-            margin: '0 auto',
-            lineHeight: 1.3
-          }}>
-            Empowering youth through tennis, one serve at a time. Learn about our story, mission, and vision,<br />
-            and discover how we're making tennis accessible for all.
-          </p>
-        </section>
-
-        {/* Our Story Section - Image and Text Side by Side */}
-        <section style={{
-          padding: '80px 20px',
-          backgroundColor: '#fff'
-        }}>
-          <div style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '60px',
-            alignItems: 'center'
-          }}>
-            <div>
-              <img
-                src="/ClinicPictures/AboutUs0.jpg"
-                alt="Project Breakpoint coaches youth tennis at local schools in Fullerton"
-                loading="lazy"
-                style={{
-                  width: '100%',
-                  height: '600px',
-                  objectFit: 'cover',
-                  borderRadius: '20px',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
-                }}
-              />
-            </div>
-            <div>
-              <h2 style={{ 
-                fontSize: '2.5rem', 
-                marginBottom: '20px', 
-                color: '#2e7d32',
-                fontWeight: 'bold'
-              }}>
-                Our Story
-              </h2>
-              <p style={{ 
-                fontSize: '1.2rem', 
-                lineHeight: '1.8', 
-                color: '#555',
-                marginBottom: '20px'
-              }}>
-              Project Breakpoint was founded by a group of college students passionate about making tennis accessible to all.
-              We believe that tennis has the power to build confidence, resilience, and community — and we are committed
-              to sharing that experience with youth from every background.
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-br from-green-50 to-emerald-50 py-20 px-4">
+          <div className="max-w-6xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl font-bold text-green-700 mb-6 tracking-tight">
+              About{" "}
+              <span className="bg-gradient-to-r from-green-700 to-emerald-600 bg-clip-text text-transparent">
+                Project Breakpoint
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto mb-12 leading-relaxed">
+              Empowering youth through tennis, one serve at a time. Learn about our story, mission, and vision,
+              and discover how we're making tennis accessible for all.
             </p>
-              <p style={{ 
-                fontSize: '1.2rem', 
-                lineHeight: '1.8', 
-                color: '#555'
-              }}>
-                What started as a simple idea has grown into a movement to break down barriers and create opportunities
-                for young people to discover their potential through the sport we love.
-              </p>
-              <p style={{ 
-                fontSize: '1.2rem', 
-                lineHeight: '1.8', 
-                color: '#555'
-              }}>
-                We have already coached at multiple elementary schools and are currently coaching weekly at a high school in San Diego, helping students of all ages experience the joy and benefits of tennis.
-              </p>
+            
+            {/* Impact Statistics */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-green-100">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="bg-green-700/10 p-3 rounded-full">
+                    <svg className="h-8 w-8 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-3xl font-bold text-green-700 mb-2">200+</h3>
+                <p className="text-gray-600 font-medium">Kids Served</p>
+              </div>
+
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-green-100">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="bg-green-700/10 p-3 rounded-full">
+                    <svg className="h-8 w-8 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-3xl font-bold text-green-700 mb-2">5+</h3>
+                <p className="text-gray-600 font-medium">Schools Partnered</p>
+              </div>
+
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-green-100">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="bg-green-700/10 p-3 rounded-full">
+                    <svg className="h-8 w-8 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-3xl font-bold text-green-700 mb-2">100%</h3>
+                <p className="text-gray-600 font-medium">Free Programs</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Our Mission Section - Text and Image Side by Side (Reversed) */}
-        <section style={{
-          padding: '80px 20px',
-          backgroundColor: '#f8faf8'
-        }}>
-          <div style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '60px',
-            alignItems: 'center'
-          }}>
-            <div>
-              <h2 style={{ 
-                fontSize: '2.5rem', 
-                marginBottom: '20px', 
-                color: '#2e7d32',
-                fontWeight: 'bold'
-              }}>
-                Our Mission
-              </h2>
-              <p style={{ 
-                fontSize: '1.2rem', 
-                lineHeight: '1.8', 
-                color: '#555',
-                marginBottom: '20px'
-              }}>
-              We aim to break down barriers and share the joy of tennis with youth from all backgrounds.
-              Our mission is to create inclusive, fun, and supportive spaces where kids can grow both on and off the court.
-            </p>
-              <p style={{ 
-                fontSize: '1.2rem', 
-                lineHeight: '1.8', 
-                color: '#555'
-              }}>
-                By providing coaching, equipment, and a welcoming environment, we give low-income kids the opportunity
-                to learn tennis and develop life skills that will serve them well beyond the court.
-              </p>
-            </div>
-            <div>
-              <img
-                src="/ClinicPictures/AboutUs1.JPEG"
-                alt="Free tennis coaching for low-income youth in Fullerton"
-                loading="lazy"
-                style={{
-                  width: '100%',
-                  height: '400px',
-                  objectFit: 'cover',
-                  borderRadius: '20px',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
-                }}
-              />
+        {/* Our Story Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative group">
+                <img
+                  src="/ClinicPictures/AboutUs0.jpg"
+                  alt="Project Breakpoint coaches youth tennis at local schools in Fullerton"
+                  loading="lazy"
+                  className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div className="space-y-6">
+                <h2 className="text-4xl lg:text-5xl font-bold text-green-700 mb-6">
+                  Our Story
+                </h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Project Breakpoint was founded by a group of college students passionate about making tennis accessible to all.
+                  We believe that tennis has the power to build confidence, resilience, and community — and we are committed
+                  to sharing that experience with youth from every background.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  What started as a simple idea has grown into a movement to break down barriers and create opportunities
+                  for young people to discover their potential through the sport we love.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  We have already coached at multiple elementary schools and are currently coaching weekly at a high school in San Diego, helping students of all ages experience the joy and benefits of tennis.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Our Vision Section - Image and Text Side by Side */}
-        <section style={{
-          padding: '80px 20px',
-          backgroundColor: '#fff'
-        }}>
-          <div style={{
-            maxWidth: '1200px',
-            margin: '0 auto',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '60px',
-            alignItems: 'center'
-          }}>
-            <div>
-              <img
-                src="/ClinicPictures/AboutUs2.JPEG"
-                alt="Kids learning tennis through Project Breakpoint's non-profit programs in Fullerton"
-                loading="lazy"
-                style={{
-                  width: '100%',
-                  height: '400px',
-                  objectFit: 'cover',
-                  borderRadius: '20px',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.15)'
-                }}
-              />
-            </div>
-            <div>
-              <h2 style={{ 
-                fontSize: '2.5rem', 
-                marginBottom: '20px', 
-                color: '#2e7d32',
-                fontWeight: 'bold'
-              }}>
-                Our Vision
-              </h2>
-              <p style={{ 
-                fontSize: '1.2rem', 
-                lineHeight: '1.8', 
-                color: '#555',
-                marginBottom: '20px'
-              }}>
-              We envision a future where every child—regardless of income, location, or experience—has the opportunity
-              to learn, grow, and thrive through tennis. We hope to expand our reach nationally and develop future leaders
-              who give back to their communities through sport.
-            </p>
-              <p style={{ 
-                fontSize: '1.2rem', 
-                lineHeight: '1.8', 
-                color: '#555'
-              }}>
-                Through tennis, we're building a community of confident, resilient young people who understand the value
-                of teamwork, perseverance, and giving back.
-              </p>
+        {/* Our Mission Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-50 to-emerald-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6 order-2 lg:order-1">
+                <h2 className="text-4xl lg:text-5xl font-bold text-green-700 mb-6">
+                  Our Mission
+                </h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  We aim to break down barriers and share the joy of tennis with youth from all backgrounds.
+                  Our mission is to create inclusive, fun, and supportive spaces where kids can grow both on and off the court.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  By providing coaching, equipment, and a welcoming environment, we give low-income kids the opportunity
+                  to learn tennis and develop life skills that will serve them well beyond the court.
+                </p>
+              </div>
+              <div className="relative group order-1 lg:order-2">
+                <img
+                  src="/ClinicPictures/AboutUs1.JPEG"
+                  alt="Free tennis coaching for low-income youth in Fullerton"
+                  loading="lazy"
+                  className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* What We Do Section - Centered with Bullet Points */}
-        <section style={{
-          padding: '80px 20px',
-          backgroundColor: '#263a44',
-          color: '#fff',
-          textAlign: 'center'
-        }}>
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <h2 style={{ 
-              fontSize: '2.5rem', 
-              marginBottom: '40px', 
-              color: '#d6f36b',
-              fontWeight: 'bold'
-            }}>
+        {/* Our Vision Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative group">
+                <img
+                  src="/ClinicPictures/AboutUs2.JPEG"
+                  alt="Kids learning tennis through Project Breakpoint's non-profit programs in Fullerton"
+                  loading="lazy"
+                  className="w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-2xl group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div className="space-y-6">
+                <h2 className="text-4xl lg:text-5xl font-bold text-green-700 mb-6">
+                  Our Vision
+                </h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  We envision a future where every child—regardless of income, location, or experience—has the opportunity
+                  to learn, grow, and thrive through tennis. We hope to expand our reach nationally and develop future leaders
+                  who give back to their communities through sport.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Through tennis, we're building a community of confident, resilient young people who understand the value
+                  of teamwork, perseverance, and giving back.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* What We Do Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 to-green-900 text-white">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-4xl lg:text-5xl font-bold text-emerald-400 mb-12">
               What We Do
             </h2>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '30px',
-              marginTop: '40px'
-            }}>
-              <div style={{
-                background: 'rgba(255,255,255,0.1)',
-                padding: '30px',
-                borderRadius: '15px'
-              }}>
-                <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🎾</div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '10px', color: '#d6f36b' }}>Teaching Life Skills</h3>
-                <p style={{ fontSize: '1rem', lineHeight: '1.6' }}>Through tennis, we teach confidence, resilience, and teamwork</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-emerald-400/30 hover:bg-white/15 hover:border-emerald-400/50 transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-4">🎾</div>
+                <h3 className="text-xl font-semibold mb-4 text-emerald-300">Teaching Life Skills</h3>
+                <p className="text-gray-300 leading-relaxed">Through tennis, we teach confidence, resilience, and teamwork</p>
               </div>
-              <div style={{
-                background: 'rgba(255,255,255,0.1)',
-                padding: '30px',
-                borderRadius: '15px'
-              }}>
-                <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🌱</div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '10px', color: '#d6f36b' }}>Fostering Inclusivity</h3>
-                <p style={{ fontSize: '1rem', lineHeight: '1.6' }}>Creating welcoming spaces for youth from all backgrounds</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-emerald-400/30 hover:bg-white/15 hover:border-emerald-400/50 transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-4">🌱</div>
+                <h3 className="text-xl font-semibold mb-4 text-emerald-300">Fostering Inclusivity</h3>
+                <p className="text-gray-300 leading-relaxed">Creating welcoming spaces for youth from all backgrounds</p>
               </div>
-              <div style={{
-                background: 'rgba(255,255,255,0.1)',
-                padding: '30px',
-                borderRadius: '15px'
-              }}>
-                <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🤝</div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '10px', color: '#d6f36b' }}>Building Partnerships</h3>
-                <p style={{ fontSize: '1rem', lineHeight: '1.6' }}>Working with schools and community centers</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-emerald-400/30 hover:bg-white/15 hover:border-emerald-400/50 transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-4">🤝</div>
+                <h3 className="text-xl font-semibold mb-4 text-emerald-300">Building Partnerships</h3>
+                <p className="text-gray-300 leading-relaxed">Working with schools and community centers</p>
               </div>
-              <div style={{
-                background: 'rgba(255,255,255,0.1)',
-                padding: '30px',
-                borderRadius: '15px'
-              }}>
-                <div style={{ fontSize: '3rem', marginBottom: '15px' }}>🧠</div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '10px', color: '#d6f36b' }}>Supporting Wellness</h3>
-                <p style={{ fontSize: '1rem', lineHeight: '1.6' }}>Promoting mental and physical health through sport</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-emerald-400/30 hover:bg-white/15 hover:border-emerald-400/50 transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-4">🧠</div>
+                <h3 className="text-xl font-semibold mb-4 text-emerald-300">Supporting Wellness</h3>
+                <p className="text-gray-300 leading-relaxed">Promoting mental and physical health through sport</p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-600 to-emerald-700 text-white">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              Ready to Get Involved?
+            </h2>
+            <p className="text-xl text-green-100 mb-8 leading-relaxed">
+              Join us in making tennis accessible to every child. Whether you want to volunteer, donate, or enroll your child, we'd love to hear from you.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-white text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                Volunteer With Us
+              </button>
+              <button className="border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 bg-transparent">
+                Contact Us
+              </button>
             </div>
           </div>
         </section>
