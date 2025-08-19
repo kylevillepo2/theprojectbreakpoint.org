@@ -12,6 +12,12 @@ function Navbar() {
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/events">Events</Link>
+        <Link 
+          to="/donate" 
+          className="donate-btn"
+        >
+          Donate
+        </Link>
       </div>
     </nav>
   );
