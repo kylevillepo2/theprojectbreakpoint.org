@@ -72,7 +72,7 @@ export default async function handler(req, res) {
       name: name.trim().substring(0, 100),
       email: email.trim().toLowerCase().substring(0, 100),
       subject: subject.trim().substring(0, 200),
-      inquiryType: ['general', 'volunteer', 'donation', 'enrollment', 'partnership'].includes(inquiryType) ? inquiryType : 'general',
+      inquiryType: ['general', 'volunteer', 'donation', 'enrollment', 'partnership', 'chapter'].includes(inquiryType) ? inquiryType : 'general',
       message: message.trim().substring(0, 2000)
     };
 
@@ -83,15 +83,8 @@ export default async function handler(req, res) {
       await client.connect();
     } catch (dbError) {
       console.error('MongoDB connection error:', dbError);
-      // If MongoDB is not configured, still send email notification
-      await sendEmailNotification({
-        ...sanitizedData,
-        createdAt: new Date()
-      });
-      
-      return res.status(200).json({ 
-        message: 'Contact form submitted successfully (email notification sent)',
-        note: 'Database not configured - contact saved via email only'
+      return res.status(503).json({
+        message: 'Your message could not be saved. Please email proj.breakpoint@gmail.com.'
       });
     }
 

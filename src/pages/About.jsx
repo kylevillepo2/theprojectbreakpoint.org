@@ -1,3 +1,4 @@
+import AccessibleDialog from "../components/AccessibleDialog";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
@@ -73,7 +74,7 @@ Message: ${registrationForm.message}
         <meta name="description" content="Learn about Project Breakpoint, a tennis non-profit providing free tennis coaching, equipment, and a welcoming environment for low-income youth in the Fullerton area. Discover our story, mission, and vision." />
       </Helmet>
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex="-1">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-green-50 to-emerald-50 py-20 px-4">
           <div className="max-w-6xl mx-auto text-center">
@@ -156,7 +157,7 @@ Message: ${registrationForm.message}
                   for young people to discover their potential through the sport we love.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  We have already coached at multiple elementary schools and are currently coaching weekly at a high school in San Diego, helping students of all ages experience the joy and benefits of tennis.
+                  Our active UC Irvine chapter connects student volunteers with local youth. Our incoming UC San Diego chapter is launching soon.
                 </p>
               </div>
             </div>
@@ -288,7 +289,7 @@ Message: ${registrationForm.message}
 
       {/* Registration Popup */}
       {showRegistrationPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <AccessibleDialog label="Volunteer registration" onClose={() => setShowRegistrationPopup(false)}>
           <div className="bg-white rounded-2xl p-8 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="text-center">
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -411,7 +412,7 @@ Message: ${registrationForm.message}
               )}
             </div>
           </div>
-        </div>
+        </AccessibleDialog>
       )}
     </div>
   );

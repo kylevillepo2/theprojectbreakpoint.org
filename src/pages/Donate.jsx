@@ -9,9 +9,9 @@ function Donate() {
   const [customAmount, setCustomAmount] = useState('');
 
   const presetAmounts = [
-    { value: 25, label: '$25', description: 'Provides tennis equipment for one child' },
-    { value: 50, label: '$50', description: 'Supports one month of coaching for a child' },
-    { value: 100, label: '$100', description: 'Funds a complete tennis program session' }
+    { value: 25, label: '$25', description: 'Support free youth tennis' },
+    { value: 50, label: '$50', description: 'Support free youth tennis' },
+    { value: 100, label: '$100', description: 'Support free youth tennis' }
   ];
 
   const handleVenmoDonation = (amount) => {
@@ -33,7 +33,7 @@ function Donate() {
       </Helmet>
       <Navbar />
       
-      <main>
+      <main id="main-content" tabIndex="-1">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-green-50 to-emerald-50 py-20 px-4">
           <div className="max-w-6xl mx-auto text-center">
@@ -253,51 +253,6 @@ function Donate() {
             </div>
           </div>
         </section>
-
-        {/* Testimonials */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-green-700 text-center mb-12">
-              Stories of Impact
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-green-600 p-3 rounded-full">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 italic mb-4">
-                      "Thanks to Project Breakpoint, my son discovered his love for tennis. 
-                      The coaches are amazing and he's gained so much confidence."
-                    </p>
-                    <div className="text-sm text-gray-600">- Maria, Parent</div>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-green-600 p-3 rounded-full">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 italic mb-4">
-                      "Volunteering with Project Breakpoint has been incredibly rewarding. 
-                      Seeing kids develop their skills and confidence is priceless."
-                    </p>
-                    <div className="text-sm text-gray-600">- David, Volunteer Coach</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        
 
         <SubscribeSection />
       </main>

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import AccessibleDialog from "../components/AccessibleDialog";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
@@ -7,12 +8,7 @@ import { Helmet } from "react-helmet";
 
 function Events() {
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [timeLeft, setTimeLeft] = useState({days: 0, hours: 0, minutes: 0, seconds: 0});
-  const [showPopup, setShowPopup] = useState(false);
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-  
+
   // Partnership popup state
   const [showPartnershipPopup, setShowPartnershipPopup] = useState(false);
   const [partnershipForm, setPartnershipForm] = useState({
@@ -48,47 +44,12 @@ function Events() {
   ];
 
   // Sample events data (you can replace with real data later)
-  const events = [
-    {
-      id: 1,
-      title: "Fullerton Volunteer",
-      category: "volunteer",
-      date: "",
-      time: "",
-      location: "Fullerton",
-      description: "Join our volunteer program to mentor and coach tennis to youth. We'll mentor you in coaching the kids - no tennis experience required!",
-      status: "upcoming",
-      image: "/ClinicPictures/AboutUs2.JPEG",
-      registration: "Open",
-      highlights: ["Mentorship Provided", "No Experience Needed", "Make Impact"]
-    }
-  ];
+  const events = [];
 
   // Filter events based on selected category
   const filteredEvents = selectedCategory === 'all' 
     ? events 
     : events.filter(event => event.category === selectedCategory);
-
-  // Countdown timer for featured event
-  useEffect(() => {
-    const eventTime = new Date(2025, 9, 1, 9, 0); // October 1, 2025, 9:00 AM
-    const updateTimer = () => {
-      const now = new Date();
-      const diff = eventTime - now;
-      if (diff <= 0) {
-        setTimeLeft({days: 0, hours: 0, minutes: 0, seconds: 0});
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      setTimeLeft({days, hours, minutes, seconds});
-    };
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -105,44 +66,6 @@ function Events() {
       case 'ongoing': return 'Ongoing';
       case 'past': return 'Past';
       default: return 'Unknown';
-    }
-  };
-
-  const handleEmailSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: 'Email Notification Signup',
-          email: email,
-          subject: 'Fullerton Launch Notification Request',
-          inquiryType: 'enrollment',
-          message: `User signed up for email notifications about the Fullerton launch. Email: ${email}`
-        }),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setEmail('');
-        setTimeout(() => {
-          setShowPopup(false);
-          setSubmitStatus(null);
-        }, 2000);
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Error submitting email:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -248,11 +171,11 @@ Message: ${registrationForm.message}
     <div>
       <Helmet>
         <title>Events | Project Breakpoint</title>
-        <meta name="description" content="Join Project Breakpoint's tennis events, clinics, and tournaments. Free tennis programs for youth in Fullerton and San Diego. Volunteer opportunities and community events." />
+        <meta name="description" content="Join Project Breakpoint's tennis events, clinics, and tournaments. Free youth tennis programs through university chapters. UC Irvine is active; UC San Diego is launching soon. Volunteer opportunities and community events." />
       </Helmet>
       <Navbar />
       
-      <main>
+      <main id="main-content" tabIndex="-1">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-green-50 to-emerald-50 py-20 px-4">
           <div className="max-w-6xl mx-auto text-center">
@@ -266,45 +189,6 @@ Message: ${registrationForm.message}
               Discover upcoming tennis clinics, tournaments, volunteer opportunities, and community events. 
               All programs are free and open to youth of all skill levels.
             </p>
-          </div>
-        </section>
-
-        {/* Featured Event Countdown */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-green-600 to-emerald-700 text-white">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-              🎾 Fullerton Launch Coming Soon!
-            </h2>
-            <p className="text-xl mb-8 text-green-100">
-              We're expanding to Fullerton this October! Join us for our inaugural tennis clinics.
-            </p>
-            
-            {/* Countdown Timer */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8">
-              <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
-                <div className="text-3xl md:text-4xl font-bold">{timeLeft.days}</div>
-                <div className="text-sm text-green-100">Days</div>
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
-                <div className="text-3xl md:text-4xl font-bold">{timeLeft.hours}</div>
-                <div className="text-sm text-green-100">Hours</div>
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
-                <div className="text-3xl md:text-4xl font-bold">{timeLeft.minutes}</div>
-                <div className="text-sm text-green-100">Minutes</div>
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
-                <div className="text-3xl md:text-4xl font-bold">{timeLeft.seconds}</div>
-                <div className="text-sm text-green-100">Seconds</div>
-              </div>
-            </div>
-
-            <button 
-              onClick={() => setShowPopup(true)}
-              className="bg-white text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
-              Get Notified When Registration Opens
-            </button>
           </div>
         </section>
 
@@ -452,71 +336,9 @@ Message: ${registrationForm.message}
       </main>
       <Footer />
 
-      {/* Email Notification Popup */}
-      {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
-            <div className="text-center">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                Stay Updated!
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Enter your email to stay updated on our programs and be notified when registration opens for our Fullerton tennis clinics.
-              </p>
-              
-              <form onSubmit={handleEmailSubmit} className="space-y-4">
-                <div>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
-                  />
-                </div>
-                
-                <div className="flex gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setShowPopup(false)}
-                    className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? 'Submitting...' : 'Notify Me'}
-                  </button>
-                </div>
-              </form>
-
-              {submitStatus === 'success' && (
-                <div className="mt-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
-                  ✅ Thank you! You'll be notified when registration opens.
-                </div>
-              )}
-              {submitStatus === 'error' && (
-                <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
-                  ❌ Something went wrong. Please try again.
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Partnership Popup */}
       {showPartnershipPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <AccessibleDialog label="Partnership inquiry" onClose={() => setShowPartnershipPopup(false)}>
           <div className="bg-white rounded-2xl p-8 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="text-center">
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -658,12 +480,12 @@ Message: ${registrationForm.message}
               )}
             </div>
           </div>
-        </div>
+        </AccessibleDialog>
       )}
 
       {/* Registration Popup */}
       {showRegistrationPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <AccessibleDialog label="Volunteer registration" onClose={() => setShowRegistrationPopup(false)}>
           <div className="bg-white rounded-2xl p-8 max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="text-center">
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -786,7 +608,7 @@ Message: ${registrationForm.message}
               )}
             </div>
           </div>
-        </div>
+        </AccessibleDialog>
       )}
     </div>
   );

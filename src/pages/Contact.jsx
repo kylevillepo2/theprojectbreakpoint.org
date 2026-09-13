@@ -65,7 +65,7 @@ const Contact = () => {
       </Helmet>
       <Navbar />
       
-      <main>
+      <main id="main-content" tabIndex="-1">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-green-50 to-emerald-50 py-20 px-4">
           <div className="max-w-6xl mx-auto text-center">
@@ -92,7 +92,7 @@ const Contact = () => {
                     Send Us a Message
                   </h2>
                   <p className="text-lg text-gray-600">
-                    Fill out the form below and we'll get back to you within 24 hours.
+                    Fill out the form below and our team will get back to you.
                   </p>
                 </div>
 
@@ -207,12 +207,12 @@ const Contact = () => {
 
                   {/* Status Messages */}
                   {submitStatus === 'success' && (
-                    <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
-                      ✅ Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                    <div role="status" className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+                      ✅ Thank you! Your message has been sent successfully. Our team will get back to you.
                     </div>
                   )}
                   {submitStatus === 'error' && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                    <div role="alert" className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
                       ❌ Sorry, there was an error sending your message. Please try again or contact us directly.
                     </div>
                   )}
@@ -243,7 +243,7 @@ const Contact = () => {
                       >
                         proj.breakpoint@gmail.com
                       </a>
-                      <p className="text-sm text-gray-600 mt-1">We respond within 24 hours</p>
+                      <p className="text-sm text-gray-600 mt-1">Contact our student team</p>
                     </div>
                   </div>
                 </div>
@@ -284,7 +284,7 @@ const Contact = () => {
                       <h4 className="text-lg font-semibold text-green-700 mb-2">Service Areas</h4>
                       <p className="text-gray-700">
                         <strong>Fullerton, CA</strong><br />
-                        <strong>San Diego, CA</strong><br />
+                        <strong>UC San Diego chapter: launching soon</strong><br />
                         <strong>Orange County</strong>
                       </p>
                     </div>
@@ -302,7 +302,7 @@ const Contact = () => {
                     <div>
                       <h4 className="text-lg font-semibold text-blue-700 mb-2">Response Time</h4>
                       <p className="text-gray-700">
-                        We typically respond to all inquiries within <strong>24 hours</strong> during business days.
+                        Our student team will respond as soon as possible.
                       </p>
                     </div>
                   </div>
